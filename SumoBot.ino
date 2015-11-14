@@ -1,5 +1,6 @@
 #include "Led.h"
 #include "Motor.h"
+#include "InfraredSensor.h"
 
 void setup()
 {
