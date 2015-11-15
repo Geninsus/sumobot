@@ -8,9 +8,9 @@ class InfraredSensor
 public:
     InfraredSensor(const unsigned char &pin);
 
-    unsigned char getValue()const;
-    int getValueCm()const;
-    unsigned char getPin()const {return mPin;}
+    unsigned char getValue() const;
+    int getValueCm() const;
+    unsigned char getPin() const {return mPin;}
 private:
     unsigned char mPin;
 };
