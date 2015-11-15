@@ -6,7 +6,7 @@
 class Led
 {
 public:
-    Led(const unsigned char &pin);
+    Led(unsigned char pin);
 
    	void on() {setState(1);}
     void off() {setState(0);}
@@ -17,7 +17,7 @@ private:
     unsigned char mPin;
     bool mState;
     
-    void setState(const bool &state);
+    void setState(bool state);
 };
 
 #endif

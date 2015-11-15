@@ -5,7 +5,7 @@
  * 
  * @param char Numéro de pin associé
  */
-Led::Led(const unsigned char &pin) : mPin(pin) {
+Led::Led(unsigned char pin) : mPin(pin) {
 	pinMode(mPin, OUTPUT);
 
 	setState(0);
@@ -16,9 +16,9 @@ Led::Led(const unsigned char &pin) : mPin(pin) {
  * 
  * @param bool Etat à prendre. 0: Eteind 1: Allumé
  */
-void Led::setState(const bool &state)
+void Led::setState(bool state)
 {
 	mState = state;
 
-	digitalWrite(mPin, mState);
+	digitalWrite(mPin, mState ? HIGH : LOW);
 }

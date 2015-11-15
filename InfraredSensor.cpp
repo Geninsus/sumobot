@@ -5,7 +5,7 @@
  * 
  * @param unsigned char Numéro de pin associé
  */
-InfraredSensor::InfraredSensor(const unsigned char &pin) : mPin(pin)
+InfraredSensor::InfraredSensor(unsigned char pin) : mPin(pin), mDefaultVal(0)
 {
 	pinMode(mPin, INPUT);
 }
@@ -28,4 +28,14 @@ unsigned char InfraredSensor::getValue() const
 int InfraredSensor::getValueCm() const
 {
 	return 4800/(getValue() - 20);
+}
+
+/**
+ * @brief Modifie la valeur par défaut (au début du combat) du capteur
+ * 
+ * @param char Valeur par défaut
+ */
+void InfraredSensor::setDefaultVal(unsigned char defaultVal)
+{
+  mDefaultVal = defaultVal;
 }

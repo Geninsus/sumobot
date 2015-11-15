@@ -1,21 +1,20 @@
-#ifndef InfraredSensor_h
-#define InfraredSensor_h
+#ifndef LineSensor_h
+#define LineSensor_h
 
 #include "Arduino.h"
 
-class InfraredSensor
+class LineSensor
 {
 public:
-    InfraredSensor(unsigned char pin);
+    LineSensor(unsigned char pin);
 
     unsigned char getValue() const;
-    int getValueCm() const;
 
-    void setDefaultVal(unsigned char defaultVal);
+	void setDefaultVal(unsigned char defaultVal);
 
     unsigned char getPin() const {return mPin;}
     unsigned char getDefaultVal() const {return mDefaultVal;}
-    private:
+private:
     unsigned char mPin;
     unsigned char mDefaultVal;
 };

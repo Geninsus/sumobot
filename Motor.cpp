@@ -7,7 +7,7 @@
  * @param char Pin associée à l'entrée 2 du moteur
  * @param char Pin associée à l'entrée enable du moteur. ex 0: Moteur à l'arret  127: Moteur à mi-puissance 255: Moteur à puissance maximale
  */
-Motor::Motor(const unsigned char &input1, const unsigned char &input2, const unsigned char &enable) : mInput1(input1), mInput2(input2), mEnable(enable)
+Motor::Motor(unsigned char input1, unsigned char input2, unsigned char enable) : mInput1(input1), mInput2(input2), mEnable(enable)
 {
 	pinMode(mInput1, OUTPUT);
 	pinMode(mInput2, OUTPUT);
@@ -22,7 +22,7 @@ Motor::Motor(const unsigned char &input1, const unsigned char &input2, const uns
  * 
  * @param char Valeur de la puissance du moteur. ex 0: Moteur à l'arret  127: Moteur à mi-puissance 255: Moteur à puissance maximale
  */
-void Motor::setValue(const unsigned char &value)
+void Motor::setValue(unsigned char value)
 {
 	mValue = value;
 	analogWrite(mEnable, mValue);
@@ -33,9 +33,9 @@ void Motor::setValue(const unsigned char &value)
  * 
  * @param bool Sens du moteur
  */
-void Motor::setDirection(const bool &direction)
+void Motor::setDirection(bool direction)
 {
 	mDirection = direction;
-	digitalWrite(mInput1, mDirection);
-	digitalWrite(mInput2, !mDirection);
+	digitalWrite(mInput1, mDirection ? HIGH : LOW);
+	digitalWrite(mInput2, mDirection ? LOW : HIGH);
 }
