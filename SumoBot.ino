@@ -3,24 +3,14 @@
 
 void setup()
 {
-	/**
-	 * Exemple d'utilisation de la classe Led
-	 */
+	Motor left(0, 1, 0);
+	Motor right(2, 3, 1);
 
-	Led led1(2);
-	led1.setState(1);
-
-	 /**
-	  * Exemple d'utilisation de la classe Motor
-	  */
-
-	 Motor motor1(1, 2, 3);
-
-	 motor1.setDirection(1);
-	 motor1.setValue(255);
+	// prepare
 }
 
 void loop()
 {
-
+	// search
+	
 }

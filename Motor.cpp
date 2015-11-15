@@ -12,6 +12,9 @@ Motor::Motor(const unsigned char &input1, const unsigned char &input2, const uns
 	pinMode(mInput1, OUTPUT);
 	pinMode(mInput2, OUTPUT);
 	pinMode(mEnable, OUTPUT);
+
+	setValue(0);
+	setDirection(1);
 }
 
 /**
