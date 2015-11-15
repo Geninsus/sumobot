@@ -1,8 +1,0 @@
-{
-    "arduino_folder": "/usr/share/arduino", 
-    "full_compilation": true, 
-    "platform": 1, 
-    "platform_name": "Arduino AVR Boards", 
-    "set_bare_gcc_only": true, 
-    "show_compilation_output": true
-}
