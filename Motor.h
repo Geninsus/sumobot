@@ -8,8 +8,8 @@ class Motor
 public:
 	Motor(unsigned char input1, unsigned char input2, unsigned char enable);
 
-	void setValue(unsigned char value);
-	void setDirection(bool direction);
+	void setValue(const unsigned char& value);
+	void setDirection(const bool& direction);
 
 	unsigned char getValue() const {return mValue;}
 	bool getDirection() const {return mDirection;}

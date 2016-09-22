@@ -9,10 +9,13 @@
 #include "InfraredSensor.h"
 #include "LineSensor.h"
 
+enum	{start};
+
 class Robot
 {
 public:
 	static void prepare(long waitingTime);
+	static int state;
 private:
 	static std::vector<Motor> motors;
 	static std::vector<InfraredSensor> infraredSensors;

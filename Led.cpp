@@ -1,9 +1,9 @@
 #include "Led.h"
 
 /**
- * @brief Constructeur de Led
- * 
- * @param char Numéro de pin associé
+ * Constructeur de Led
+ *
+ * @param pin Numéro de pin associé
  */
 Led::Led(unsigned char pin) : mPin(pin) {
 	pinMode(mPin, OUTPUT);
@@ -12,11 +12,11 @@ Led::Led(unsigned char pin) : mPin(pin) {
 }
 
 /**
- * @brief Modifie l'état de la led
- * 
- * @param bool Etat à prendre. 0: Eteind 1: Allumé
+ * Modifie l'état de la led
+ *
+ * @param state Etat à prendre. 0: Eteind 1: Allumé
  */
-void Led::setState(bool state)
+void Led::setState(const bool& state)
 {
 	mState = state;
 

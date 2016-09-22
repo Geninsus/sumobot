@@ -11,7 +11,7 @@ public:
     unsigned char getValue() const;
     int getValueCm() const;
 
-    void setDefaultVal(unsigned char defaultVal);
+    void setDefaultVal(const unsigned char& defaultVal);
 
     unsigned char getPin() const {return mPin;}
     unsigned char getDefaultVal() const {return mDefaultVal;}

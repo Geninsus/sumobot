@@ -11,13 +11,13 @@ public:
    	void on() {setState(1);}
     void off() {setState(0);}
 
-    unsigned char getPin() {return mPin;}
-    bool getState() {return mState;}
+    unsigned char getPin() const{return mPin;}
+    bool getState() const{return mState;}
 private:
     unsigned char mPin;
     bool mState;
-    
-    void setState(bool state);
+
+    void setState(const bool& state);
 };
 
 #endif

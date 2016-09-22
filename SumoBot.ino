@@ -37,6 +37,7 @@ std::vector<Led> Robot::leds = {
 	Led(7)
 };
 
+int Robot::state = start;
 
 void setup()
 {
@@ -46,5 +47,8 @@ void setup()
 void loop()
 {
 	// search
-	
+	switch(Robot::state) {
+		case start:
+			break;
+	}
 }
