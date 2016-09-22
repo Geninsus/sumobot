@@ -12,15 +12,14 @@
 
 ## To do ##
 
-* A faire
-  * Faire le solidworks (exemple)
-
+* **A faire**
+    * Faire le solidworks (exemple)
 * Arthur
-  * Faire des soudures cool
+    * Faire des soudures cool
 * Fabien
-  * exemple
+    * exemple
 * Guillaume
-  * exemple 
+    * exemple 
 
 ## Compiler les sources ##
 
