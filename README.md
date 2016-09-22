@@ -15,4 +15,4 @@
 
 * Installer la bibliothèque [StandardCplusplus](https://github.com/maniacbug/StandardCplusplus). 
 
-* Ajouter le flag `-std=c++0x`à la ligne `compiler.cpp.flags` dans le fichier `Arduino\hardware\arduino\avr\platform.txt`.
+* Ajouter le flag `-std=c++0x` à la ligne `compiler.cpp.flags` dans le fichier `Arduino\hardware\arduino\avr\platform.txt`.
