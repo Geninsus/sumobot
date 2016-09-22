@@ -9,7 +9,7 @@
 #include "InfraredSensor.h"
 #include "LineSensor.h"
 
-enum	{start};
+enum	{start, searchEnnemy};
 
 class Robot
 {
@@ -22,6 +22,7 @@ public:
 	static std::vector<Led> leds;
 
 	static void prepare(long waitingTime);
+	static void searchEnnemy();
 	static void forward();
 	static void backward();
 	static void left();

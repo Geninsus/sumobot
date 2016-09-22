@@ -8,16 +8,19 @@ class InfraredSensor
 public:
     InfraredSensor(unsigned char pin);
 
-    unsigned char getValue() const;
-    int getValueCm() const;
+    bool detectEnnemy();
 
     void setDefaultVal(const unsigned char& defaultVal);
 
     unsigned char getPin() const {return mPin;}
     unsigned char getDefaultVal() const {return mDefaultVal;}
-    private:
+    unsigned char getValue() const;
+    int getValueCm() const;
+
+private:
     unsigned char mPin;
     unsigned char mDefaultVal;
+
 };
 
 #endif

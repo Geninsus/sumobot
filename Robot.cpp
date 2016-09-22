@@ -3,7 +3,7 @@
 /**
  * Préparation du robot et temps d'attentes
  *
- * @param waitingTime Temps d'attente
+ * @param waitingTime Temps d'attente en ms
  */
 void Robot::prepare(long waitingTime)
 {
@@ -16,14 +16,25 @@ void Robot::prepare(long waitingTime)
 		if(millis() > startingTime + waitingTime / 2) {
 			for (unsigned i = 0; i < Robot::infraredSensors.size(); ++i)
 			{
+				// On affine la valeur par défaut de chaque capteurs infrarouge
 				Robot::infraredSensors[i].setDefaultVal((Robot::infraredSensors[i].getDefaultVal() * numMeasure + Robot::infraredSensors[i].getValue()) / (numMeasure + 1));
 			}
 			for (unsigned i = 0; i < Robot::lineSensors.size(); ++i)
 			{
+				// On affine la valeur par défaut de chaque capteurs de ligne
 				Robot::lineSensors[i].setDefaultVal((Robot::lineSensors[i].getDefaultVal() * numMeasure + Robot::lineSensors[i].getValue()) / (numMeasure + 1));
 			}
+			numMeasure++;
 		}
 	}
+}
+
+/**
+ * Recherche l'ennemi
+ */
+void Robot::searchEnnemy()
+{
+		Robot::left();
 }
 
 /**

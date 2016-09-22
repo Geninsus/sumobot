@@ -37,15 +37,20 @@ int Robot::state = start;
 
 void setup()
 {
-	Robot::forward();
-	// prepare
 }
 
 void loop()
 {
-	// search
 	switch(Robot::state) {
+
 		case start:
+			Robot::prepare(5000);
+			Robot::state = searchEnnemy;
+			break;
+
+		case searchEnnemy:
+			Robot::searchEnnemy();
 			break;
 	}
+
 }
