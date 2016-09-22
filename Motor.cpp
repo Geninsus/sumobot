@@ -13,28 +13,28 @@ Motor::Motor(unsigned char input1, unsigned char input2, unsigned char enable) :
 	pinMode(mInput2, OUTPUT);
 	pinMode(mEnable, OUTPUT);
 
-	setValue(0);
-	setDirection(1);
+	setPower(0);
+	setDirection(forward);
 }
 
 /**
  * Modifie la puissance du moteur
- * @param value Valeur de la puissance du moteur. ex 0: Moteur à l'arret  127: Moteur à mi-puissance 255: Moteur à puissance maximale
+ * @param power Valeur de la puissance du moteur. ex 0: Moteur à l'arret  127: Moteur à mi-puissance 255: Moteur à puissance maximale
  */
-void Motor::setValue(const unsigned char& value)
+void Motor::setPower(const unsigned char& power)
 {
-	mValue = value;
-	analogWrite(mEnable, mValue);
+	mPower = power;
+	analogWrite(mEnable, mPower);
 }
 
 /**
  * Modifie le sens du moteur
  *
- * @param direction Sens du moteur
+ * @param direction Sens du moteur: forward | backward
  */
-void Motor::setDirection(const bool& direction)
+void Motor::setDirection(const direction& d)
 {
-	mDirection = direction;
+	mDirection = d;
 	digitalWrite(mInput1, mDirection ? HIGH : LOW);
 	digitalWrite(mInput2, mDirection ? LOW : HIGH);
 }

@@ -13,9 +13,7 @@ std::vector<InfraredSensor> Robot::infraredSensors = {
 	InfraredSensor(0),
 	InfraredSensor(1),
 	InfraredSensor(2),
-	InfraredSensor(3),
-	InfraredSensor(4),
-	InfraredSensor(5)
+	InfraredSensor(3)
 };
 
 std::vector<LineSensor> Robot::lineSensors = {
@@ -25,10 +23,8 @@ std::vector<LineSensor> Robot::lineSensors = {
 	LineSensor(11)
 };
 
-std::vector<Motor> Robot::motors = {
-	Motor(0, 1, 6),
-	Motor(2, 3, 7)
-};
+Motor Robot::motorLeft = Motor(6, 7, 11);
+Motor Robot::motorRight = Motor(8, 9, 10);
 
 std::vector<Led> Robot::leds = {
 	Led(4),
@@ -41,6 +37,7 @@ int Robot::state = start;
 
 void setup()
 {
+	Robot::forward();
 	// prepare
 }
 

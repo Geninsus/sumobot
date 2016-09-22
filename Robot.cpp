@@ -1,7 +1,7 @@
 #include "Robot.h"
 
 /**
- * @brief Préparation du robot et temps d'attentes
+ * Préparation du robot et temps d'attentes
  *
  * @param waitingTime Temps d'attente
  */
@@ -24,4 +24,48 @@ void Robot::prepare(long waitingTime)
 			}
 		}
 	}
+}
+
+/**
+ * Avancer
+ */
+void Robot::forward()
+{
+	Robot::motorLeft.setDirection(direction::forward);
+	Robot::motorRight.setDirection(direction::forward);
+	Robot::motorLeft.setPower(255);
+	Robot::motorRight.setPower(255);
+}
+
+/**
+ * Reculer
+ */
+void Robot::backward()
+{
+	Robot::motorLeft.setDirection(direction::backward);
+	Robot::motorRight.setDirection(direction::backward);
+	Robot::motorLeft.setPower(255);
+	Robot::motorRight.setPower(255);
+}
+
+/**
+ * Tourner vers la gauche
+ */
+void Robot::left()
+{
+	Robot::motorLeft.setDirection(direction::backward);
+	Robot::motorRight.setDirection(direction::forward);
+	Robot::motorLeft.setPower(255);
+	Robot::motorRight.setPower(255);
+}
+
+/**
+ * Tourner vers la droite
+ */
+void Robot::right()
+{
+	Robot::motorLeft.setDirection(direction::forward);
+	Robot::motorRight.setDirection(direction::backward);
+	Robot::motorLeft.setPower(255);
+	Robot::motorRight.setPower(255);
 }

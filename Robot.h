@@ -14,13 +14,18 @@ enum	{start};
 class Robot
 {
 public:
-	static void prepare(long waitingTime);
 	static int state;
-private:
-	static std::vector<Motor> motors;
+	static Motor motorLeft;
+	static Motor motorRight;
 	static std::vector<InfraredSensor> infraredSensors;
 	static std::vector<LineSensor> lineSensors;
 	static std::vector<Led> leds;
+
+	static void prepare(long waitingTime);
+	static void forward();
+	static void backward();
+	static void left();
+	static void right();
 };
 
 #endif
