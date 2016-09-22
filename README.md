@@ -10,6 +10,17 @@
 * Les noms de variables, fonctions etc. doivent être écrits en ** Camelcase **.
 * Toutes les fonctions, sauf les main, doivent être commentées (Utilisez [DockBlockr](https://packagecontrol.io/packages/DocBlockr)).
 
+## To do ##
+
+* A faire
+  * Faire le solidworks (exemple)
+
+* Arthur
+  * Faire des soudures cool
+* Fabien
+  * exemple
+* Guillaume
+  * exemple 
 
 ## Compiler les sources ##
 
