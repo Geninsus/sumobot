@@ -8,15 +8,18 @@ class LineSensor
 public:
   LineSensor(unsigned char pin);
 
-  unsigned char getValue() const;
-
+  bool isBlack() const;
 	void setDefaultVal(const unsigned char& defaultVal);
+  unsigned char getValue() const;
 
   unsigned char getPin() const {return mPin;}
   unsigned char getDefaultVal() const {return mDefaultVal;}
 private:
   unsigned char mPin;
   unsigned char mDefaultVal;
+  int sensitivity = 0.08;
+  unsigned char nbMeasurement = 5;
+
 };
 
 #endif

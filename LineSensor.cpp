@@ -10,6 +10,21 @@ LineSensor::LineSensor(unsigned char pin) : mPin(pin), mDefaultVal(0)
 	pinMode(mPin, INPUT);
 }
 
+/**
+ * Couleur noir détécté par le capteur
+ *
+ * @return bool Est-il noir
+ */
+bool LineSensor::isBlack() const
+{
+	unsigned char value =  getValue();
+	if((float)(getDefaultVal() - value) / (float)value > sensitivity) {
+		return 0; // Blanc
+	} else {
+		return 1; // Noir
+	}
+}
+
  /**
   * Retourne la valeur du capteur
   *
@@ -17,7 +32,11 @@ LineSensor::LineSensor(unsigned char pin) : mPin(pin), mDefaultVal(0)
   */
 unsigned char LineSensor::getValue() const
 {
-	return analogRead(getPin());
+	int result = 0;
+	for(int i = nbMeasurement; i--;) {
+		result += analogRead(getPin());
+	}
+	return result / nbMeasurement;
 }
 
 /**

@@ -9,34 +9,29 @@
 
 #include "Robot.h"
 
+enum direction {front, back, left, right};
+
 std::vector<InfraredSensor> Robot::infraredSensors = {
-	InfraredSensor(0),
-	InfraredSensor(1),
-	InfraredSensor(2),
-	InfraredSensor(3)
+	InfraredSensor(4)
 };
 
 std::vector<LineSensor> Robot::lineSensors = {
-	LineSensor(8),
-	LineSensor(9),
-	LineSensor(10),
-	LineSensor(11)
+	LineSensor(0),
+	LineSensor(1)
 };
 
 Motor Robot::motorLeft = Motor(6, 7, 11);
 Motor Robot::motorRight = Motor(8, 9, 10);
 
 std::vector<Led> Robot::leds = {
-	Led(4),
-	Led(5),
-	Led(6),
-	Led(7)
+	Led(13)
 };
 
 int Robot::state = start;
 
 void setup()
 {
+	Serial.begin(9600);
 }
 
 void loop()
@@ -45,11 +40,15 @@ void loop()
 
 		case start:
 			Robot::prepare(5000);
-			Robot::state = searchEnnemy;
+			Robot::state = testLineSensors;
 			break;
 
 		case searchEnnemy:
 			Robot::searchEnnemy();
+			break;
+
+		case testLineSensors:
+			Robot::testLineSensors();
 			break;
 	}
 

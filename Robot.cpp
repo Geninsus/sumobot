@@ -27,6 +27,14 @@ void Robot::prepare(long waitingTime)
 			numMeasure++;
 		}
 	}
+	for (unsigned i = 0; i < Robot::lineSensors.size(); ++i)
+	{
+			Serial.print("LineSensors ");
+			Serial.print(i);
+			Serial.print(": ");
+			Serial.println(Robot::lineSensors[i].getDefaultVal());
+	}
+
 }
 
 /**
@@ -35,6 +43,39 @@ void Robot::prepare(long waitingTime)
 void Robot::searchEnnemy()
 {
 		Robot::left();
+		if(Robot::detectEnnemy()) {
+
+		}
+}
+
+/**
+ * Détecte l'ennemi le plus proche
+ * @return Distance à l'ennemi, -1 si pas d'ennemi
+ */
+int Robot::detectEnnemy()
+{
+	for(unsigned i = 0; i < Robot::infraredSensors.size(); i++) {
+		if(Robot::infraredSensors[i].detectEnnemy()) {
+			// BLa bla
+		}
+	}
+	return -1;
+}
+
+void Robot::testLineSensors()
+{
+	for (unsigned i = 0; i < Robot::lineSensors.size(); ++i)
+	{
+			Serial.print(i);
+			if(Robot::lineSensors[i].isBlack())
+			{
+				Serial.println(" - Black");
+			} else {
+				Serial.println(" - White");
+			}
+	}
+	Serial.println("");
+	delay(1000);
 }
 
 /**
@@ -42,8 +83,8 @@ void Robot::searchEnnemy()
  */
 void Robot::forward()
 {
-	Robot::motorLeft.setDirection(direction::forward);
-	Robot::motorRight.setDirection(direction::forward);
+	Robot::motorLeft.setDirection(rotationDirection::forward);
+	Robot::motorRight.setDirection(rotationDirection::forward);
 	Robot::motorLeft.setPower(255);
 	Robot::motorRight.setPower(255);
 }
@@ -53,8 +94,8 @@ void Robot::forward()
  */
 void Robot::backward()
 {
-	Robot::motorLeft.setDirection(direction::backward);
-	Robot::motorRight.setDirection(direction::backward);
+	Robot::motorLeft.setDirection(rotationDirection::backward);
+	Robot::motorRight.setDirection(rotationDirection::backward);
 	Robot::motorLeft.setPower(255);
 	Robot::motorRight.setPower(255);
 }
@@ -64,8 +105,8 @@ void Robot::backward()
  */
 void Robot::left()
 {
-	Robot::motorLeft.setDirection(direction::backward);
-	Robot::motorRight.setDirection(direction::forward);
+	Robot::motorLeft.setDirection(rotationDirection::backward);
+	Robot::motorRight.setDirection(rotationDirection::forward);
 	Robot::motorLeft.setPower(255);
 	Robot::motorRight.setPower(255);
 }
@@ -75,8 +116,8 @@ void Robot::left()
  */
 void Robot::right()
 {
-	Robot::motorLeft.setDirection(direction::forward);
-	Robot::motorRight.setDirection(direction::backward);
+	Robot::motorLeft.setDirection(rotationDirection::forward);
+	Robot::motorRight.setDirection(rotationDirection::backward);
 	Robot::motorLeft.setPower(255);
 	Robot::motorRight.setPower(255);
 }

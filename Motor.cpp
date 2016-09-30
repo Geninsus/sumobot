@@ -32,7 +32,7 @@ void Motor::setPower(const unsigned char& power)
  *
  * @param direction Sens du moteur: forward | backward
  */
-void Motor::setDirection(const direction& d)
+void Motor::setDirection(const rotationDirection& d)
 {
 	mDirection = d;
 	digitalWrite(mInput1, mDirection ? HIGH : LOW);
