@@ -35,6 +35,7 @@ void Motor::setPower(const unsigned char& power)
 void Motor::setDirection(const rotationDirection& d)
 {
 	mDirection = d;
+  Serial.println(mDirection);
 	digitalWrite(mInput1, mDirection ? HIGH : LOW);
 	digitalWrite(mInput2, mDirection ? LOW : HIGH);
 }

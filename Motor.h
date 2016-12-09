@@ -3,7 +3,7 @@
 
 #include "Arduino.h"
 
-enum rotationDirection {forward = 1, backward = 0};
+enum rotationDirection {forward = 0, backward = 1};
 
 class Motor
 {

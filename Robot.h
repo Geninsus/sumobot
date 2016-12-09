@@ -9,7 +9,7 @@
 #include "InfraredSensor.h"
 #include "LineSensor.h"
 
-enum	{start, searchEnnemy, testLineSensors};
+enum	{start, searchEnnemy, test};
 
 class Robot
 {
@@ -24,7 +24,7 @@ public:
 	static void prepare(long waitingTime);
 	static void searchEnnemy();
 	static int detectEnnemy();
-	static void testLineSensors();
+	static void test();
 	static void forward();
 	static void backward();
 	static void left();

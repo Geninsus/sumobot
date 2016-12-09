@@ -7,34 +7,12 @@
  */
 void Robot::prepare(long waitingTime)
 {
-	long numMeasure = 0;
 	long startingTime = millis();
 
 	// Tant que le temps d'attente n'est pas écoulé
 	while(millis() < startingTime + waitingTime) {
-		// À la mi-temps on initialise les capteurs
-		if(millis() > startingTime + waitingTime / 2) {
-			for (unsigned i = 0; i < Robot::infraredSensors.size(); ++i)
-			{
-				// On affine la valeur par défaut de chaque capteurs infrarouge
-				Robot::infraredSensors[i].setDefaultVal((Robot::infraredSensors[i].getDefaultVal() * numMeasure + Robot::infraredSensors[i].getValue()) / (numMeasure + 1));
-			}
-			for (unsigned i = 0; i < Robot::lineSensors.size(); ++i)
-			{
-				// On affine la valeur par défaut de chaque capteurs de ligne
-				Robot::lineSensors[i].setDefaultVal((Robot::lineSensors[i].getDefaultVal() * numMeasure + Robot::lineSensors[i].getValue()) / (numMeasure + 1));
-			}
-			numMeasure++;
-		}
-	}
-	for (unsigned i = 0; i < Robot::lineSensors.size(); ++i)
-	{
-			Serial.print("LineSensors ");
-			Serial.print(i);
-			Serial.print(": ");
-			Serial.println(Robot::lineSensors[i].getDefaultVal());
-	}
 
+	}
 }
 
 /**
@@ -42,40 +20,48 @@ void Robot::prepare(long waitingTime)
  */
 void Robot::searchEnnemy()
 {
-		Robot::left();
-		if(Robot::detectEnnemy()) {
-
+		int enemy = Robot::detectEnnemy();
+		switch (enemy) {
+			case 0:
+				Robot::forward();
+				break;
+			case 1:
+				Robot::forward();
+				break;
+			case 2:
+				Robot::forward();
+				break;
+			case 3:
+				Robot::forward();
+				break;
+			default:
+				Robot::left();
 		}
 }
 
 /**
- * Détecte l'ennemi le plus proche
- * @return Distance à l'ennemi, -1 si pas d'ennemi
+ * Test les capteurs et moteurs
+ */
+void Robot::test()
+{
+	if(Robot::lineSensors[0].isWhite()) Robot::backward();
+	if(Robot::lineSensors[1].isWhite()) Robot::backward();
+	if(Robot::lineSensors[2].isWhite()) Robot::forward();
+	if(Robot::lineSensors[3].isWhite()) Robot::forward();
+}
+
+/**
+ * Détecte un enemi
+ * @return id du capteur, -1 si pas d'ennemi
  */
 int Robot::detectEnnemy()
 {
 	for(unsigned i = 0; i < Robot::infraredSensors.size(); i++) {
 		if(Robot::infraredSensors[i].detectEnnemy()) {
-			// BLa bla
+			return i;
 		}
 	}
 	return -1;
-}
-
-void Robot::testLineSensors()
-{
-	for (unsigned i = 0; i < Robot::lineSensors.size(); ++i)
-	{
-			Serial.print(i);
-			if(Robot::lineSensors[i].isBlack())
-			{
-				Serial.println(" - Black");
-			} else {
-				Serial.println(" - White");
-			}
-	}
-	Serial.println("");
-	delay(1000);
 }
 
 /**
