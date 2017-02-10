@@ -11,10 +11,11 @@
 
 #define WAIT_TIME 5000
 
-enum direction {front, back, left, right};
-
 std::vector<InfraredSensor> Robot::infraredSensors = {
-	InfraredSensor(A0)
+	InfraredSensor(A0),
+	InfraredSensor(A1),
+	InfraredSensor(A2),
+	InfraredSensor(A3)
 };
 
 std::vector<LineSensor> Robot::lineSensors = {
@@ -44,17 +45,16 @@ void loop()
 
 		case start:
 			Robot::prepare(WAIT_TIME);
-			//Robot::state = test;
 			Robot::state = searchEnnemy;
 			break;
 
 		case searchEnnemy:
+			Robot::escapeLine();
 			Robot::searchEnnemy();
 			break;
 
 		case test:
-			Robot::test();
+			//Robot::test();
 			break;
 	}
-
 }

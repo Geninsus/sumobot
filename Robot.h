@@ -23,10 +23,13 @@ public:
 
 	static void prepare(long waitingTime);
 	static void searchEnnemy();
-	static int detectEnnemy();
+	static void escapeLine();
+	static std::vector<bool> detectEnnemy();
+  static std::vector<bool> detectLine();
 	static void test();
-	static void forward();
-	static void backward();
+	static void go(int angle, bool reverse);
+	static void forward(int angle);
+	static void backward(int angle);
 	static void left();
 	static void right();
 };
